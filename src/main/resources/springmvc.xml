@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/mvc
+  http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+ http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+ 
+ 	
+ 	<context:component-scan base-package="com.bw.controller"></context:component-scan>
+ 	
+ 	<!-- mvc的注解驱动 -->
+ 	<mvc:annotation-driven></mvc:annotation-driven>
+ 	
+<!--  	<!-- 不拦静态资源 -->
+ 	<mvc:default-servlet-handler/> -->
+
+ 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ 		<property name="prefix" value="/WEB-INF/view/"></property>
+ 		<property name="suffix" value=".jsp"></property>
+ 	</bean>
+
+<!--  配置上传试题解析器
+     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+     		文件名的编码格式
+     		<property name="defaultEncoding" value="UTF-8"/>
+     		 上传文件的大小  10兆
+     		<property name="maxUploadSize" value="10485760"/>
+     		单个文件上传的大小
+     		<property name="maxUploadSizePerFile" value="1048576"/>
+     </bean> -->
+           
+ <!--      拦截器  
+      <mvc:interceptors>
+      	<mvc:interceptor>
+      		<mvc:mapping path="/**"/>
+      		<mvc:exclude-mapping path="/toLogin"/>
+      		<mvc:exclude-mapping path="/login"/>
+      		<bean class="com.lq.interceptor.MyInterceptor"></bean>
+      	</mvc:interceptor>
+添加和修改的拦截器
+      	<mvc:interceptor>只拦截添加和修改方法
+      		<mvc:mapping path="/add"/>
+      		<mvc:mapping path="/update"/>
+      		<bean class="com.bw.interceptor.AddUpdateInterceptor"></bean>
+      	</mvc:interceptor>
+      </mvc:interceptors>  -->
+ 
+ </beans>
